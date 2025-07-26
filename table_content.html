@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar PDF Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Calibri, sans-serif;
+    }
+
+    .container {
+      width: 1440px;
+      height: 1024px;
+      display: flex;
+      background: #E2E2E2;
+    }
+
+    .sidebar {
+      width: 364px;
+      background: rgba(12, 47, 80, 0.94);
+      color: white;
+      padding-top: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .sidebar-button {
+      background-color: #D9D9D9;
+      color: black;
+      margin: 6px 12px;
+      padding: 12px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar-button:hover {
+      background-color: #bbb;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 95%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>TABLE OF CONTENTS</h2>
+      <div class="sidebar-button" onclick="loadContent('stakeholder.pdf')">STAKEHOLDER LIST</div>
+      <div class="sidebar-button" onclick="loadContent('introduction.pdf')">INTRODUCTION</div>
+      <div class="sidebar-button" onclick="loadContent('equipment-list.pdf')">EQUIPMENT LISTS</div>
+      <div class="sidebar-button" onclick="loadContent('design-criteria.pdf')">DESIGN CRITERIA</div>
+      <div class="sidebar-button" onclick="loadContent('procedures.pdf')">OPERATING PROCEDURES</div>
+      <div class="sidebar-button" onclick="loadContent('maintenance.pdf')">MAINTENANCE SCOPE</div>
+      <div class="sidebar-button" onclick="loadContent('settings.pdf')">EQUIPMENT SETTING</div>
+      <div class="sidebar-button" onclick="loadContent('passwords.pdf')">EQUIPMENT PASSWORD</div>
+      <div class="sidebar-button" onclick="loadContent('spares.pdf')">SPARE PART LIST</div>
+      <div class="sidebar-button" onclick="loadContent('testing.pdf')">TESTING & COMMISSIONING</div>
+      <div class="sidebar-button" onclick="loadContent('completion.pdf')">PROJECT COMPLETION & WARRANTY</div>
+      <div class="sidebar-button" onclick="loadContent('catalogue.pdf')">MANUFACTURER’S CATALOGUE</div>
+      <div class="sidebar-button" onclick="loadContent('drawings.pdf')">AS-BUILT DRAWINGS</div>
+      <div class="sidebar-button" onclick="loadContent('contracts.pdf')">CONTRACT & LICENSE AREA</div>
+      <div class="sidebar-button" onclick="loadContent('fire-table.pdf')">FIRE CAUSE & EFFECT TABLE</div>
+      <div class="sidebar-button" onclick="loadContent('leed.pdf')">LEED</div>
+      <div class="sidebar-button" onclick="loadContent('cfd.pdf')">CFD</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+      <iframe id="pdfViewer" src=""></iframe>
+    </div>
+  </div>
+
+  <script>
+    function loadContent(fileName) {
+      document.getElementById('pdfViewer').src = 'pdfs/' + fileName;
+    }
+  </script>
+</body>
+</html>

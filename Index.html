@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Kodchasan', sans-serif;
+    }
+
+    .background-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .background-img {
+      width: 100%;
+      height: 100%;
+      background-image: url('images/pexels-pixabay-269077.jpg'); /* Update this to your image path */
+      background-size: cover;
+      background-position: center;
+      transform-origin: center;
+      animation: zoomOutOnly 4s ease-out forwards;
+    }
+
+    @keyframes zoomOutOnly {
+      from {
+        transform: scale(1.1);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .signin-container {
+      position: absolute;
+      width: 1100px;
+      height: 780px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .overlay-card {
+      position: absolute;
+      width: 412px;
+      height: 260px;
+      left: 345px;
+      top: 320px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+    }
+
+    .signin-title {
+      position: absolute;
+      width: 238px;
+      height: 50px;
+      left: 430px;
+      top: 355px;
+      text-align: center;
+      color: #FDFDFD;
+      font-size: 30px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .input-bg {
+      position: absolute;
+      background: #FDFDFD;
+      border-radius: 10px;
+    }
+
+    #email-bg {
+      width: 320px;
+      height: 38px;
+      left: 390px;
+      top: 420px;
+    }
+
+    #password-bg {
+      width: 320px;
+      height: 38px;
+      left: 390px;
+      top: 470px;
+    }
+
+    .input-field {
+      position: absolute;
+      font-size: 18px;
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 400;
+      border: none;
+      outline: none;
+      padding-left: 44px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      height: 30px;
+    }
+
+    #email-input {
+      top: 423px;
+      left: 390px;
+      width: 320px;
+    }
+
+    #password-input {
+      top: 473px;
+      left: 390px;
+      width: 320px;
+    }
+
+    .icon {
+      position: absolute;
+      border-radius: 10px;
+    }
+
+    #email-icon {
+      width: 30px;
+      height: 32px;
+      left: 395px;
+      top: 420px;
+    }
+
+    #password-icon {
+      width: 22px;
+      height: 28px;
+      left: 400px;
+      top: 475px;
+    }
+
+    .login-button-bg {
+      position: absolute;
+      width: 160px;
+      height: 40px;
+      left: 460px;
+      top: 520px;
+      background: #FFFBFB;
+      border-radius: 5px;
+    }
+
+    #login-button {
+      position: absolute;
+      left: 460px;
+      top: 520px;
+      width: 160px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      font-family: 'Koh Santepheap', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: rgba(15.94, 15.25, 15.26, 0.83);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #login-button:hover {
+      background-color: #e6e6e6;
+      border-radius: 5px;
+    }
+
+    #equinix-logo {
+      position: absolute;
+      width: 180px;
+      height: 38px;
+      left: 460px;
+      top: 300px;
+      border-radius: 10px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-wrapper">
+    <div class="background-img"></div>
+  </div>
+
+  <div class="signin-container">
+    <div class="overlay-card"></div>
+
+    <div class="signin-title">Sign In</div>
+
+    <div id="email-bg" class="input-bg"></div>
+    <input
+      type="email"
+      id="email-input"
+      class="input-field"
+      placeholder="Enter E-mail ID"
+      autocomplete="username"
+      required
+    />
+    <img
+      id="email-icon"
+      class="icon"
+      src="images/user.jpg"
+      alt="Email Icon"
+    />
+
+    <div id="password-bg" class="input-bg"></div>
+    <input
+      type="password"
+      id="password-input"
+      class="input-field"
+      placeholder="Enter Password"
+      autocomplete="current-password"
+      required
+    />
+    <img
+      id="password-icon"
+      class="icon"
+      src="images/lock.png"
+      alt="Password Icon"
+    />
+
+    <div class="login-button-bg"></div>
+    <button id="login-button" type="button">Log In</button>
+
+    <img
+      id="equinix-logo"
+      src="images/Equinix_logo.png"
+      alt="Equinix Logo"
+    />
+  </div>
+
+  <script>
+    document.getElementById("login-button").addEventListener("click", function () {
+      const email = document.getElementById("email-input").value.trim();
+      const password = document.getElementById("password-input").value.trim();
+
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      // Redirect to Power BI report
+      window.location.href =
+        "https://app.powerbi.com/view?r=eyJrIjoiZmZiNzFlOTQtY2I0YS00Yjg0LThiNzMtNjBkNGM1YmZkMTRjIiwidCI6ImQ4YWI3YjYwLTk0MzAtNDc1My05ODkyLTFjYzBkMjM2NjY4OCJ9";
+    });
+  </script>
+</body>
+</html>
